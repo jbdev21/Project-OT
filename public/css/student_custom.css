@@ -1,0 +1,76 @@
+
+.mobile-title{
+	font-size:20px;
+	font-weight: bold;
+	margin-left:20px;
+}
+
+.box-list{
+	line-height: 1;
+	padding:15px 20px 10px 20px;
+	-webkit-box-shadow: 4px 4px 5px -6px rgba(158, 158, 158, 0.84);
+	-moz-box-shadow: 4px 4px 5px -6px rgba(158, 158, 158, 0.84);
+	box-shadow: 4px 4px 5px -6px rgba(158, 158, 158, 0.84);
+}
+
+.box-list .content{
+	padding:10px;
+}
+
+
+.box-list .time{
+	line-height: 0.8;
+}
+
+
+.box-list .time span {
+	font-size: 28px;
+}
+
+
+.row.sm-gutters {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.row.sm-gutters>[class^="col-"],
+.row.sm-gutters>[class*=" col-"] {
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+
+.box{
+	margin-bottom: 30px;
+	-webkit-box-shadow: 4px 6px 35px -6px rgba(158,158,158,0.84);
+	-moz-box-shadow: 4px 6px 35px -6px rgba(158,158,158,0.84);
+	box-shadow: 4px 6px 35px -6px rgba(158,158,158,0.84)
+}
+.padding-xs{
+	padding: 10px;
+}
+.padding-sm{
+	padding: 20px;
+}
+
+.testimonials-div{
+	margin-top: 10px;
+	border:1px solid #ccc;
+	padding: 10px;
+}
+
+.todo-icon{
+	margin-top: -12px;
+}
+
+@media (max-width: 900px)
+{
+	#student_menu{
+		display: none;
+	}
+
+	.fc button{
+		padding: 3px;
+		font-size: 9px;
+	}
+}

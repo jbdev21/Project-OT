@@ -1,0 +1,120 @@
+'site_title'                                 => '',  사이트명 // Title of website or company
+'site_email'                                 => '',  이메일 // Site email address - will show on website
+'website_email'                              => '',  이메일 // Explanation: Email use by the admin
+'email_support'                              => '',   이메일
+'website_email_support'                      => '',  이메일 // Explanation: Email address use for customer suppport
+'contact_information'                        => '', 연락처
+'phone_number'                               => '',  전화번호
+'companyphonenumber'                         => '', 전화번호
+'phone_number2'                              => '', 전화번호 2
+'companyphonenumber2'                        => '', 전화번호 2
+'company_address'                            => '', 주소
+'notification'                               => '', 알림
+'adminto_notify'                             => '', 알림// Adminstrator to notify
+'adminwhorecievesnotification'               => '', 알림 // Admin who recieves notification
+'default_gateway'                            => '', 디폴트 게이트웨이
+'nice_pay'                                   => '',나이스페이
+'pay_pal'                                    => '',페이팔
+'application_default_payment_gateway'        => '', 기본결제시스템 
+'my_bank_information'                        => '', 계좌
+'bank_name'                                  => '', 은행명
+'thiswillshowfor_bankmethod'                 => '', 계좌이체란에 표기됩니다//This will show for Bank method 
+'bank_account_number'                        => '', 계좌번호
+'account_numberwheretheenrolleepay'          => '', 계좌번호//Account Number where the enrollee pay
+'bank_account_holder_name'                   => '', 예금주
+'bank_account_owner_name'                    => '', 예금주
+'merchant_k_e_y'                             => '', Merchant Key // Merchant Key
+'nice_pay_merchantkeyforvalidation'          => '', 나이스페이 확인//NicePay Merchant key for validation
+'merchant_i_d'                               => '', // 상점 아이디 Merchant ID
+'nice_pay_merchantkeyfor'                    => '', NicePay Merchant key//NicePay Merchant key
+'all_the_gate'                               => '', 올더게이트// All the Gate
+'store_i_d'                                  => '', 상점아이디
+'paypal'                                     => '', 페이팔
+'a_p_iurl'                                   => '', Api URL// Api URL
+'a_p_i_key'                                  => '', Api Key // Api Key
+'a_p_i_password'                             => '', API Password// API Password
+'defaults'                                   => '',기본설정
+'default_video_virtual_room'                 => '기본설정',
+'application_default_video_virtual_room'     => '기본설정',
+'videoware'                                  => '비디오웨어',
+'videoware_url'                              => '비디오웨어 URL',
+'theurlorservertoconnect'                    => '서버주소', //The url or server to connect
+'braincert'                                  => '브레인서트', 
+'a_p_i_endpoint'                             => 'API End point',
+'braincert_a_p_i_endpoint'                   => 'Brancert API End point', // Brancert API End point
+'application_programming_interface_key'      => 'Application Programming Interface Key', //Application Programming Interface Key
+'level_test_duration'                        => '레벨테스트 시간',
+'minutesof_level_test_class'                 => '분수', //Minutes of level Test
+'minutes_before_class'                       => '강의시간 이전 강의실 오픈시간', //Minutes Before Class
+'minutesallowedtoopenclassroom'              => '강의실 접속제한시간', // Minutes allowed to open class room
+'minutes_after_class'                        => '강의시간 이후 강의실 오픈시간', //Minutes After Class
+'minutesallowedevenclasshourshasbeenended'   => '수업종료 후 강의실 오픈시간', //Minutes allowed even class hours has been ended
+'classroom_time_zone'                        => '타임존',
+'application_default_classroom_time_zone'    => '타임존 설정',
+'datacenter_region'                          => '데이터센터',
+'application_default_datacenter_region'      => '테이터센터 설정',
+'timeand_date_formats'                       => '날짜형식', // Date and Time format
+'date_time_format'                           => '날짜형식',
+'overall_datetime_format'                    => '날짜형식',
+'date_format'                                => '날짜형식',
+'overall_date_format'                        => '날짜형식',
+'time_format'                                => '날짜형식',
+'overall_date_format'                        => '날짜형식',
+'timezones'                                  => '타임존',
+'admin_timezone'                             => '관리자 타임존',
+'administrator_timezone'                     => '관리자 타임존',
+'teacher_timezone'                           => '강사 타임존',
+'teacher_timezone'                           => '강사 타임존',
+'student_timezone'                           => '학생 타임존',
+'student_timezone'                           => '학생 타임존',
+'start_queue'                                =>'시작점'
+
+
+for button
+'proceed'               => '확인',
+    'print'                 => '프린트'
+
+
+'proceed'               =>'확인', //for button
+    'or_cancel'             =>'취소', //for button
+
+
+
+/*
+Enrollment Label
+*/
+'weekly_agenda'                             => '주별',
+'days_agenda'                               => '월별',
+'renew_every_month'                        => '1개월',
+'renew_every_3_months'                      => '3개월', 
+'renew_every_6_months'                      => '6개월',
+'renew_every_1_year'                        => '1년',
+'date_&_time'                               => '날짜 및 시간',
+'course'                                    => '코스',
+'payment'                                   => '수강료',
+'finish'                                    => '완료',
+'what_day_you_want'                         => '수업요일', // with question mark
+'when_do_you_want_to_start'                 => '시작일', // with question mark
+'what_time_do_you_want'                     => '수업시간', // with question mark
+'product'                                   =>'제품',
+'min.'                                      =>'분',
+'sessions'                                  =>'세션',
+'credi_card'                                =>'신용카드',
+'bank'                                      =>'은행계좌',
+'date_of_payment'                           =>'입금날짜',
+'payor_name'                                =>'입금자명',
+'bank_information'                          =>'은행정보',
+'submission_manager'                        =>'제출',
+'user_id'                                   =>'아이디',
+'personal_information'                      =>'개인정보',
+'class_information'                         =>'수강정보',
+'total_sessions'                            =>'전체수업',
+'enrolled_date'                             =>'등록일자',
+'won'                                       =>'원',
+'min'                                       =>'분',
+'mos'                                       =>'개월',
+'1_month'                                   =>'1개월',
+'3_months'                                  =>'3개월',
+'6_months'                                  =>'6개월',
+'12_months'                                 =>'12개월',
+'discount'                                  =>'할인'

@@ -1,0 +1,27 @@
+
+
+ #select{
+    border-radius: 0px !important;
+  }
+
+  .times li{
+    padding: 13px 15px 12px;
+  }
+
+  .times li iframe{
+    padding-top:4px;
+  }
+
+.columns{
+	display: flex;
+}
+
+.columns .column{
+	flex: 1;
+  	flex-wrap: wrap;
+  	flex-direction: column;
+}
+
+.padding-sm{
+	padding:5px;
+}

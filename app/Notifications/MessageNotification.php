@@ -1,0 +1,105 @@
+<?php
+
+namespace App\Notifications;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
+use App\Message;
+
+class MessageNotification extends Notification
+{
+    use Queueable;
+    public $message;
+    /**
+     * Create a new notification instance.
+     *
+     * @return void
+     */
+    public function __construct(Message $message)
+    {
+        $this->message = $message;
+    }
+
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function via($notifiable)
+    {
+        return ['database', 'broadcast'];
+    }
+
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        return (new MailMessage)
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
+    }
+
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
+    public function toArray($notifiable)
+    {
+        return [
+            //
+        ];
+    }
+
+    public function toDatabase($notifiable)
+    {
+        if($this->message->admin->type == "teacher")
+        {
+            $message = "New Message From Student";
+            $url = "/teacher/message/" . $this->message->id;
+            $title = "New Message";
+        }else{
+            $message = $this->message->user->username . ' ' . $this->message->user->korean_name;
+            $url = "/admin/message/" . $this->message->id;
+            $title = "1:1문의등록";
+        }
+
+        return [
+            'message_id' => $this->message->id,
+            'url'   => $url,
+            'title' => $title,
+            'message' => $message
+        ];
+    }
+
+    public function toBroadcast($notifiable)
+    {
+         if($this->message->admin->type == "teacher")
+        {
+            $message = "New Message From Student";
+            $url = "/teacher/message/" . $this->message->id;
+            $title = "New Message";
+        }else{
+            $message = $this->message->user->username . ' ' . $this->message->user->korean_name;
+            $url = "/admin/message/" . $this->message->id;
+            $title = "1:1문의등록";
+        }
+
+
+        return [
+            'message_id' => $this->message->id,
+            'url' => $url,
+            'title' => $title,
+            'message' => $message 
+        ];
+    }
+}

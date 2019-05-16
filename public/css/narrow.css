@@ -1,0 +1,783 @@
+@import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
+
+body{
+	background-color: #fff;
+  font-family: 'Pathway Gothic One', sans-serif !important;
+}
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.section-padding {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+@media (min-width: 1000px) {
+    .navbar-brand {
+        position: relative;
+        left: 20px;
+        top: 8px;
+    }
+}
+
+.modal-backdrop.fade,
+.modal-backdrop.fade.in {
+    opacity: .8 !important;
+}
+
+.vertical-alignment-helper {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width: inherit;
+    height: inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+}
+
+#leveltest_modal .tab-content {
+    min-height: 500px;
+}
+
+#leveltest_modal .modal-body {
+    padding: 0px;
+}
+
+#leveltest_modal .nav-tabs a {
+    padding: 20px;
+}
+
+#leveltest_modal .close2 {
+    position: absolute;
+    right: -18px;
+    top: -25px;
+    font-size: 18px;
+    background-color: white;
+    padding: 8px 15px;
+    border-radius: 50%;
+    border: #0e0f0f 2px solid;
+}
+
+#leveltest_modal .close2:hover {
+    background-color: #ccc;
+}
+
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+@media (max-width: 768px) {
+    .featurite img {
+        width: 70%;
+    }
+
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 960px;
+  }
+
+  
+
+  .jumbotron .container{
+  	max-width: 930px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.navbar{
+	margin-bottom: 0px;
+  border-bottom: 1px solid #ccc;
+  border-top:#fbb218 2px solid;
+  background-color: #474949;
+}
+
+#menu-tab{
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+  display: none;
+ 
+  border-bottom: 3px solid #f8b62c;
+}
+
+#menu-tab .flex{
+  display: flex;
+}
+
+#menu-tab .flex div{
+  flex: 1;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding-left: 5px;
+  background-color: #fff;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+#menu-tab .flex div a{
+  display: block;
+  line-height: 2;
+  color:black;
+}
+
+
+
+.navbar .navbar-nav li{
+	color:black;
+  min-width: 95px;
+  text-align: center;
+}
+
+.navbar .navbar-nav a{
+  border-left: 1px solid #ccc;
+  margin-top: 13px;
+  padding: 0px;
+  padding-right: 5px;
+  padding-left: 5px;
+  color:white;
+  font-size: 1.3em;
+  font-weight: 500;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.navbar .navbar-nav a:hover{
+  background-color: transparent;
+}
+
+
+
+.navbar .navbar-nav a:focus{
+  background-color: transparent;
+}
+
+
+
+.menu-burger a{
+	color:#ccc;
+}
+
+.slide{
+	margin-bottom: 0px;
+}
+
+.jumbotron{
+	min-height: 400px;
+	margin-bottom: 10px;
+}
+
+
+.featurite a{
+    color:gray;
+}
+
+.featurite img {
+    padding:15px;
+}
+
+.featurite a:hover{
+    color:#f8b62c;
+    text-decoration: none;
+}
+
+
+.line {
+   width: 100%; 
+   text-align: center; 
+   border-bottom: 1px solid gray; 
+   line-height: 0.1em;
+   margin: 10px 0 20px; 
+} 
+
+.line span { 
+    background:#f7f7f7; 
+    padding:0 10px; 
+}
+
+.footer{
+	padding-top: 20px;
+	padding-bottom: 10px;
+	background-color: #474949;
+	color:white;
+	border-top: 2px solid #00b1b3;
+}
+
+.page-heading{
+  width: 100%;
+  padding: 80px;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  text-transform: uppercase;
+  color:white;
+  font-weight: bold;
+}
+
+
+.notice-box{
+  border-bottom: 1px dotted #ccc;
+  margin-bottom: 10px;
+}
+
+/* .nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    /* zoom:1; /* hasLayout ie7 trigger */
+/* } */
+
+/* .nav-tabs, .nav-pills {
+    text-align:center;
+} */  
+
+.nav-tabs { 
+    border-bottom: 2px solid #DDD;  
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { 
+    border-width: 0; 
+}
+.nav-tabs > li > a { 
+    border: none; color: #666; font-size: 16px; 
+}
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover { 
+    border: none; background-color: #f8b62c !important; color:white;background: transparent; border-radius: 0px;
+}
+.nav-tabs > li > a::after { 
+    content: ""; background: #f8b62c; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); 
+}
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { 
+    transform: scale(1); 
+}
+.tab-nav > li > a::after { 
+    background: #21527d none repeat scroll 0% 0%; color: #fff; 
+}
+.tab-pane { 
+    padding: 10px 0; 
+}
+.tab-content{
+    padding:15px
+}
+
+
+.course-result-list{
+   padding: 5px;
+   padding-top: 8px;
+   border: solid 1px #f7f7f7;
+   -webkit-box-shadow: 11px 9px 22px -5px rgba(209,194,209,1);
+    -moz-box-shadow: 11px 9px 22px -5px rgba(209,194,209,1);
+    box-shadow: 11px 9px 22px -5px rgba(209,194,209,1);
+    margin-bottom: 15px;
+}
+
+.course-result-list a{
+    margin-top: 30px;
+    border-radius: 0px;
+}
+
+.course-result-list .price{
+    font-size: 45px;
+    margin-top: 5px;
+    color:#8cc152;
+}
+
+.spacer{
+   height: 60px;
+}
+
+.img-reponsive{
+  width: 100%;
+}
+
+.mini-link{
+      padding: 10px;
+      margin-top: 15px;
+    }
+
+    .mini-link a{
+      font-size: 12px !important;
+      border-left: none !important;
+    }
+    .navbar-brand{
+      padding: 5px;
+    }
+
+    .nav-dropdown{
+      height: 248px;
+      border:none;
+      box-shadow: none;
+      padding-left: 15px;
+    }
+
+    #menu-tab{
+        height: 250px;
+    }
+
+    .nav-dropdown a{
+      display: block;
+      line-height: 0.3;
+      font-size: 14px !important;
+      color:black !important;
+      padding-left: 10px;
+    }
+
+    .dropdown-menu{
+      border-radius: 0px;
+    }
+
+    .auth-dropdown{
+      margin-top: 15px;
+      text-align: right;
+      border-bottom: none;
+    }
+
+    .borderless td, .borderless th {
+    border: none;
+}
+
+    
+.notice-table a{
+          color: black;
+      }
+
+      .notice-table td{
+          color:gray;
+          font-size: 14px;
+      }
+
+      .borderless td, .borderless th {
+        border: none !important;
+        padding: 3px !important;
+    }
+
+    div.nav-dropdown a{
+      border:none !important;
+    }
+
+
+.card {
+    padding-top: 20px;
+    margin: 10px 0 20px 0;
+    background-color: rgba(214, 224, 226, 0.2);
+    border-top-width: 0;
+    border-bottom-width: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card .card-heading {
+    padding: 0 20px;
+    margin: 0;
+}
+
+.card .card-heading.simple {
+    font-size: 20px;
+    font-weight: 300;
+    color: #777;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.card .card-heading.image img {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    margin-right: 15px;
+    vertical-align: top;
+    border: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.card .card-heading.image .card-heading-header {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.card .card-heading.image .card-heading-header h3 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+    color: #262626;
+}
+
+.card .card-heading.image .card-heading-header span {
+    font-size: 12px;
+    color: #999999;
+}
+
+.card .card-body {
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.card .card-media {
+    padding: 0 20px;
+    margin: 0 -14px;
+}
+
+.card .card-media img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card .card-actions {
+    min-height: 30px;
+    padding: 0 20px 20px 20px;
+    margin: 20px 0 0 0;
+}
+
+.card .card-comments {
+    padding: 20px;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+.card .card-comments .comments-collapse-toggle {
+    padding: 0;
+    margin: 0 20px 12px 20px;
+}
+
+.card .card-comments .comments-collapse-toggle a,
+.card .card-comments .comments-collapse-toggle span {
+    padding-right: 5px;
+    overflow: hidden;
+    font-size: 12px;
+    color: #999;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-comments .media-heading {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.card.people {
+    position: relative;
+    display: inline-block;
+    width: 170px;
+    height: 300px;
+    padding-top: 0;
+    margin-left: 20px;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.card.people:first-child {
+    margin-left: 0;
+}
+
+.card.people .card-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 170px;
+    height: 150px;
+    background-color: #ffffff;
+}
+
+.card.people .card-top.green {
+    background-color: #53a93f;
+}
+
+.card.people .card-top.blue {
+    background-color: #427fed;
+}
+
+.card.people .card-info {
+    position: absolute;
+    top: 150px;
+    display: inline-block;
+    width: 100%;
+    height: 101px;
+    overflow: hidden;
+    background: #ffffff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card.people .card-info .title {
+    display: block;
+    margin: 8px 14px 0 14px;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #404040;
+}
+
+.card.people .card-info .desc {
+    display: block;
+    margin: 8px 14px 0 14px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 16px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+
+.card.people .card-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    padding: 10px 20px;
+    line-height: 29px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.card.hovercard {
+    position: relative;
+    padding-top: 0;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(214, 224, 226, 0.2);
+}
+
+.card.hovercard .cardheader {
+    background: url("http://lorempixel.com/850/280/nature/4/");
+    background-size: cover;
+    height: 135px;
+}
+
+.card.hovercard .avatar {
+    position: relative;
+    top: -50px;
+    margin-bottom: -50px;
+}
+
+.card.hovercard .avatar img {
+    width: 150px;
+    height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.5);
+    align-self: center;
+}
+
+.card.hovercard .info {
+    padding: 4px 8px 10px;
+}
+
+.card.hovercard .info .title {
+    margin-bottom: 4px;
+    font-size: 24px;
+    line-height: 1;
+    color: #262626;
+    vertical-align: middle;
+}
+
+.card.hovercard .info .desc {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+
+.card.hovercard .bottom {
+    padding: 0 20px;
+    margin-bottom: 17px;
+}
+
+.card .btn{ border-radius: 50%; width:32px; height:32px; line-height:18px;  }
+
+video::-internal-media-controls-download-button {
+    display:none;
+}
+
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px); /* Adjust as needed */
+}
+
+@media (max-width: 1000px) {
+    .navbar-header {
+        float: none;
+    }
+
+    .navbar-brand{
+        padding-bottom:15px;
+    }
+
+
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+}
+
+
+.mobile-navbar{
+  width: 100%;
+  height: 110vh;
+  overflow: auto;
+  background-color: white;
+  padding-top:20px;
+  padding-bottom:40px;
+  margin: 0;
+  z-index: 99999;
+  position: fixed;
+  top: 0px;
+  margin-top: -20px;
+
+}
+
+.mobile-navbar a{
+  font-size: 16px;
+}
+
+.mobile-navbar .link-list{
+  padding: 40px 40px 40px 20px;
+  border-bottom: 1px solid #666;
+}
+
+.mobile-navbar .link-list a{
+  display: block;
+  color:#666;
+  margin-bottom: 5px;
+}
+
+.mobile-navbar .link-list div:first-child a{
+  font-weight: bold;
+}
+
+#app{
+  position: relative;
+}
+
+.close-mobile-nav i{
+  font-size: 20px;
+}
+
+.mobile-navbar-header{
+  display: flex;
+  background-color: #474949;
+  color:white;
+  padding: 10px;
+}
+
+.mobile-navbar-header div{
+  flex:1;
+  flex-direction: column;
+}
