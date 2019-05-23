@@ -40,6 +40,18 @@
             </form>
             <hr>
             <div class="padding-md">
+                 <div class="alert alert-info" style="padding:5px; color:black" >
+                    <span v-show="!editPostponed">
+                        <h2>
+                            {{used_credits}}/{{allcredits}} 회  &nbsp;&nbsp; <i class="fa fa-pencil" @click="editPostponed = !editPostponed"></i>
+                        </h2>
+                    </span>
+                    <span v-show="editPostponed">
+                        <input type="number" value="" v-model="allcredits" style="padding:3px">
+                        <button @click="saveCredit" class="btn btn-primary btn-sm">{{ trans('button.save') }}</button>
+                        <button  @click="editPostponed = !editPostponed" class="btn btn-default btn-sm">{{ trans('button.cancel') }}</button>
+                    </span>
+                </div>
                 <div style="margin:0px" class="text-right">
                     <button class="btn btn-default btn-sm pull-left" @click="getPostponeClass"><i class="fa fa-refresh"></i></button>
                     <pagination :data="postponed_sessions" @pagination-change-page="getPostponeClass" :limit="1"></pagination>
@@ -90,13 +102,17 @@ export default {
             deduction: "",
             type: 'date',
             endpoint: baseUrl + '/admin/classer/postpone/' + this.classid,
+
+            used_credits: '',
+            allcredits: '',
+            editPostponed: false
         }
     },
     created()
     {
         this.getSession();
         this.getPostponeClass();
-
+         this.getCredits()
       
     },
     methods:{
@@ -107,6 +123,7 @@ export default {
                 .then( response => {
                     this.getPostponeClass();
                     this.getSession();
+                     this.getCredits()
                     $('.select').val(null).trigger('change');
                     this.reason = ''
                     this.$emit('submitpostpone')
@@ -127,6 +144,36 @@ export default {
                 console.log(error)
             })
         },
+
+        getCredits()
+        {
+            axios.get(baseUrl + '/admin/api/class/credits/' + this.classid)
+                .then(( response ) => {
+                    this.used_credits = response.data.used
+                    this.allcredits = response.data.current
+                    // this.all_credits = response.data.all,
+                    // this.remaining_in_class = response.data.remaining_in_class
+                })
+                .catch(( error ) => {
+
+                })
+        },
+
+        saveCredit()
+        {
+            axios.post(baseUrl + '/admin/api/class/credits/update/' + this.classid,{
+                credit: this.allcredits
+            })
+            .then( (response) => {
+                this.allcredits = parseInt(this.allcredits)
+                this.editPostponed = !this.editPostponed
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+                
+        },
+
         getSession()
         {
             this.date_list = ""

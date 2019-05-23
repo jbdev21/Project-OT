@@ -239,6 +239,7 @@ class ClassApiController extends Controller
 
             $data = array(
                 'date_time' => $session->date_time,
+                'formated_date_time' => $this->DateFormater($session->date_time),
                 'id'        => $session->id,
                 'status'    => $session->status,
                 'selected'  => $selected,

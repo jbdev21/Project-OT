@@ -45,7 +45,7 @@
                                     <br>
                                     {{$proofreading->user->korean_name}}
                                 </td>
-                                <td>{!! str_limit($proofreading->message) !!}</td>
+                                <td>{!! str_limit(strip_tags($proofreading->message)) !!}</td>
                                 <td>{!! date_formater('date_time_format', $proofreading->created_at) !!}</td>
                                 <td>
                                 	<select class="form-control input-sm" style="min-width:100px" name="admin_id" id="teacher_id_{{$proofreading->id}}" required>

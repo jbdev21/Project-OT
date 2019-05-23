@@ -24,8 +24,8 @@
                 <div class="padding-md">
                     <br>
                     <input type="hidden" :value="type"  name="type" >
-                    <label>{{ trans('label.reason') }} <small><i>{{ trans('label.optional') }}</i></small></label>
-                    <textarea name="reason" class="form-control" style="resize: none;" rows="5"></textarea>
+                     <label>{{ trans('label.reason') }} <small>선택사항 (10자이내)</small></label>
+                    <textarea maxlength="30" name="reason" class="form-control" style="resize: none;" rows="5"></textarea>
                     <br>
                     <label>{{ trans('label.postponed_credits') }}</label>
                     <br>
@@ -46,7 +46,7 @@
         </div>
         <div class="col-sm-8">
             <div class="padding-md">
-                <div style="">
+                <div class="alert alert-info" style="padding:5px; color:black">
                     <span v-show="!editPostponed">
                         <h2>
                             {{used_credits}}/{{allcredits}} 회  &nbsp;&nbsp; <i class="fa fa-pencil" @click="editPostponed = !editPostponed"></i>
