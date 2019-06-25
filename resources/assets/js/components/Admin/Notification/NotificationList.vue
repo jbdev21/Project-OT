@@ -25,7 +25,7 @@ export default {
                     newproofreading: 'App\\Notifications\\Admin\\NewProofReadingNotification',
                     postponed: 'App\\Notifications\\Admin\\PostponedNotification',
                     testimonial: 'App\\Notifications\\Admin\\NewTestimonialNotification',
-                    
+                    student: 'App\\Notifications\\Admin\\NewStudentCreated',
                 }
         }
     },
@@ -57,6 +57,10 @@ export default {
             }else if(this.notification.type === this.NOTIFICATION_TYPES.testimonial){
 
                 this.url = baseUrl + '/admin/testmonial/'+ this.notification.data.item_id + '&read=' + this.notification.id
+            
+            }else if(this.notification.type === this.NOTIFICATION_TYPES.student){
+
+                this.url = baseUrl + '/admin/student/'+ this.notification.data.item_id + 'edit&read=' + this.notification.id
             
             }
         }

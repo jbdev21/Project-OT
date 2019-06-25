@@ -238,7 +238,7 @@
 
                 })
             },
-            getResults(page = 1) {
+            getResults(page = 0) {
                 this.classes = {}
                  axios.post(baseUrl + '/admin/api/classlist/' + this.classid + "/" + this.perpage + "?page=" + page)
                     .then(response => {

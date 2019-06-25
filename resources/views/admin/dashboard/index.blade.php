@@ -160,14 +160,21 @@
                                                         if(!Auth::user()->academy){
                                                             $button .= '<a href="' . route('admin.classer.show', $class->id) . '?session='. $near_session->id .'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-eye-open"></i> '. Lang::get('button.more') .'</a>';
                                                         }
-                                                        $button  .= '<button data-url="' . route('admin.classer.show', $class->id) . '?session='. $near_session->id .'&modal=1" class="btn btn-xs btn-primary iframe-modal"><i class="glyphicon glyphicon-eye-open"></i> 팝업</button>';
+                                                        if(is_desktop()){
+                                                            $button  .= '<button data-url="' . route('admin.classer.show', $class->id) . '?session='. $near_session->id .'&modal=1" class="btn btn-xs btn-primary iframe-modal"><i class="glyphicon glyphicon-eye-open"></i> 팝업</button>';
+                                                        }
+
                                                         echo $button;
                                                     }else{
                                                         $button = "";
                                                         if(!Auth::user()->academy){
                                                             $button .= '<a href="' . route('admin.classer.show', $class->id) . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-eye-open"></i> '. Lang::get('button.more') .'</a>';
                                                         }
-                                                        $button  .= '<button  data-url="' . route('admin.classer.show', $class->id) . '?modal=1" class="btn btn-xs btn-primary iframe-modal"><i class="glyphicon glyphicon-eye-open"></i> 팝업</button>';
+
+                                                        if(is_desktop()){
+                                                            $button  .= '<button  data-url="' . route('admin.classer.show', $class->id) . '?modal=1" class="btn btn-xs btn-primary iframe-modal"><i class="glyphicon glyphicon-eye-open"></i> 팝업</button>';
+                                                        }
+                                                        
                                                         echo $button;
                                                     }
                                                     @endphp

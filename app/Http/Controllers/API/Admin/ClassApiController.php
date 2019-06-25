@@ -16,18 +16,7 @@ class ClassApiController extends Controller
 {
     function classShowList(Request $request, $id, $per_page)
     {
-        // $class = Classer::find($id);
-        // if(!$request->page || $request->page < 2){
-        //     $current_slot = $this->getNearest($id);
-        //     $current = ceil(round($current_slot / $per_page, 1));
-
-        //     $currentPage = $current > 0 ? $current : 1;
-        //     Paginator::currentPageResolver(function () use ($currentPage) {
-        //         return $currentPage;
-        //     });
-        // }
-        
-        // return $class->classSession()->paginate($per_page);
+  
         $class = Classer::find($id);
         $student_number = str_replace(["(", ")"," ", '-'],"",$class->user->contact_number);
         if(!$request->page || $request->page < 2){
@@ -43,7 +32,7 @@ class ClassApiController extends Controller
         $array = array();
         $number = 1;
        // return $class->classSession()->with('mistake')->paginate($per_page);
-        foreach($class->classSession()->with('mistake')->get() as $session)
+        foreach($class->classSession()->with('mistake')->orderBy('date_time', 'ASC')->get() as $session)
         {
             $item = array(
                 'id' => $session->id,
@@ -73,14 +62,16 @@ class ClassApiController extends Controller
 
             array_push($array , $item);
         }
-         $pageStart = $request->get('page', 1);
+
+        $pageStart =  $request->page == 0  ? $current : $request->page;
+        
         // Start displaying items from this number;
         $offSet = ($pageStart * $per_page) - $per_page; 
 
         // Get only the items you need using array_slice
         $itemsForCurrentPage = array_slice($array, $offSet, $per_page, true);
         
-        return new LengthAwarePaginator($itemsForCurrentPage, count($array), $per_page,Paginator::resolveCurrentPage(), array('path' => Paginator::resolveCurrentPath()));
+        return new LengthAwarePaginator(array_values($itemsForCurrentPage), count($array), $per_page,Paginator::resolveCurrentPage(), array('path' => Paginator::resolveCurrentPath()));
     }
 
      function DateFormater($date_time)
@@ -217,7 +208,7 @@ class ClassApiController extends Controller
 
     function sessions($id)
     {
-       $sessions = ClassSession::where('classer_id', $id)->get();
+       $sessions = ClassSession::where('classer_id', $id)->orderBy('date_time', 'ASC')->get();
       
         $session_array = array();
         $lastest = false;

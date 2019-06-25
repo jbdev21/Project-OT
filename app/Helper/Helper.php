@@ -62,7 +62,7 @@ if(!function_exists('today_attendance')){
                 return "<span>대기</span>";
             }
         }else{
-            return "<span>NC</span>";
+            return "<span style='color:yellow'>NC</span>";
         }
     }
 }

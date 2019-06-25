@@ -59,7 +59,7 @@
 		                        <div class="col-md-6 col-sm-6 col-xs-12">
 		                        	<br>
 		                        	  <label v-show="first_price">
-		                        	  	<input type="radio" name="month"  value="1"> &nbsp;1mos : {{first_price}} 
+		                        	  	<input type="radio" name="month" checked  value="1"> &nbsp;1mos : {{first_price}} 
 		                        	  </label>
 		                        	  <br>
 			                          
@@ -99,7 +99,7 @@
 		                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">{{ labelStartdate }}<span class="required">*</span>
 		                        </label>
 		                        <div class="col-md-6 col-sm-6 col-xs-12">
-			                          <input type='date' name="start_date" required  v-model="today" class="form-control"   />
+			                          <input type='text'  id="datepicker"  name="start_date" required  v-model="today" class="form-control"   />
 			                    </div>
 	                    	</div>
 

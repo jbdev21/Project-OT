@@ -414,159 +414,129 @@ class ClasserController extends Controller
 
 
 
-    public function today(Builder $builder)
+    public function today(Builder $builder, Request $request)
     {
-       // return $sessions = ClassSession::whereDate('date_time', '>=', date('Y-m-d') )->get();
-       //    if($request->q){
-           
-           //         $allclasses = $sessions->whereHas("classer", function($query) use ($request){
-               //             $query->whereHas("user", function($e) use ($request) {
-    //                 $e->where("username", 'LIKE',  '%' . $request->q . '%')
-    //                     ->orWhere("korean_name", 'LIKE',  '%' . $request->q . '%')
-    //                     ->orWhere("name", 'LIKE',  '%' . $request->q . '%')
-    //                     ->orWhere("contact_number", 'LIKE',  '%' . $request->q . '%')
-    //                     ->orWhere("contact_number1", 'LIKE',  '%' . $request->q . '%');
-    //             });
-    //         })->orWhereHas("admin", function($e) use ($request){
-        //             $e->where("name", 'LIKE',  '%' . $request->q . '%');
-        //         })->paginate(25);
-    //         $allclasses->setCollection($allclasses->sortBy(function($e){
-    //             if($e->classer()->first()->getLastSession()){
-        //                 return $e->classer()->first()->getLastSession()->date_time;
-        //             }
-        //         }));
-        
-        //     }else{
-            //         $allclasses = $sessions->paginate(25);
-    //         $allclasses->setCollection($allclasses->sortBy(function($e){
-    //             if($e->classer()->first()->getLastSession()){
-        //                 return $e->classer()->first()->getLastSession()->date_time;
-        //             }
-        //         }));
-        //     }
-        
-        //     return view('admin.class.today-all', compact('allclasses'));
-        
+        $datevalue = $request->date ? $request->date : date('Y-m-d');
         if (request()->ajax()) {
-            
-                    $sessions = ClassSession::where('admin_id','!=', Null)->whereDate('date_time', '=', date('Y-m-d'))->orderBy('date_time','ASC')->with("admin")->get();
+
+            $sessions = ClassSession::where('admin_id','!=', Null)->whereDate('date_time', $datevalue)->orderBy('date_time','ASC')->with("admin")->get();
+        
+            return DataTables::of($sessions)
+                ->addColumn('show', function ($session) {
+
+                $buttons = "";
                 
-                    return DataTables::of($sessions)
-                     ->addColumn('show', function ($session) {
-
-                        $buttons = "";
-                        
-                        $buttons .= '<a href="' . route('admin.classer.show', $session->classer->id) . '?session='. $session->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> '. Lang::get('button.more') .'</a>';
-                         
-                        if(!Auth::user()->academy){
-                           $buttons  .= '<button data-url="' . route('admin.classer.show', $session->classer->id) . '?session='. $session->id .'&modal=1" class="btn btn-xs btn-primary iframe-modal"><i class="glyphicon glyphicon-eye-open"></i> 팝업</button>';
-                        }
-
-                        return $buttons;
-                     })
-                     
-                     ->addColumn('username', function ($session) {
-                        return $session->classer->user ? $session->classer->user->username : "";
-                     })
-
-                     ->addColumn('type', function ($session) {
-                        return $session->classer->type;
-                     })
-
-                     ->addColumn('minutes', function ($session) {
-                       return $session->classer->minutes;
-                    })
-                     
-                     ->addColumn('phones', function ($session) {
-                        if($session->classer->user){
-                            
-                            $phones = "";
-                            $phones .=  $session->classer->user->contact_number . "<br>";
-
-                            if($session->classer->user->contact_number1)
-                            {
-                                $phones .= $session->classer->user->contact_number1;
-                            }else{
-                                $phones .= 'n/a';
-                            }
-                            return $phones;
-                        }
-                     })
-
-                    ->addColumn('total_sessions', function ($session) {
-                        $total = count($session->classer->getRemainingSession()) ? count($session->classer->getRemainingSession()) : "<span style='color:red'>". count($session->classer->getRemainingSession()) ."</span>" ;
-                        $total .= '/' . $session->classer->total_sessions;
-                        return $total;
-                     })
-
-                    ->addColumn('time', function ($session) {
-                        return "<b style='color:green'>" . date('A h:i', strtotime($session->date_time)) . "</b>";
-                     })
-                     
-                     ->addColumn('payment_method', function ($session) {
-                        $text =  $session->classer->payment_method == "bank" ? "<img class='img-responsive' src='" . asset('image/icons/bank.png') . "'>" : "<img class='img-responsive' src='" . asset('image/icons/credit-card.png') . "'>";
-                        $text .= number_format($session->classer->payment_price) . Lang::get('label.won');
-                        return $text;
-                    })
-
-                     ->addColumn('day', function ($session) {
-                        $days = "";
-
-                        foreach($session->classer->day as $day):
-                            $days .= Lang::get('label.'. strtolower(str_limit($day->day_name, 3, ''))) . ", ";
-                        endforeach;
-
-                        return $days;
-                     })
-
-                    ->addColumn('teacher', function ($session) {
-                        if($session->classer->admin){
-                            return $session->classer->admin->name;
-                        }else{
-                            return "";
-                        }
-                     })
-
-                     ->addColumn('status', function ($session) {
-                        if($session->status == "absent"){
-                            return "<span style='color:red'>결석</span>";
-                        }else if( $session->status == "postponed"){
-                            return "<span style='color:orange'>연기</span>";
-                        }else if($session->status == "present"){
-                            return "<span style='color:blue'>출석</span>";
-                        }else{
-                            return "<span>대기</span>";
-                        }
-                     })
-
-                    ->addColumn('duration', function ($session) {
-                        $first_session = $session->classer->getFirstSession();
-                        if($first_session){
-                            return date_formater('date_format', $first_session->date_time);
-                        }
-                    })
-
-                    ->addColumn('last_session', function ($session) {
-                        $last_session = $session->classer->getLastSession();
-                        if($last_session){
-                            return date_formater('date_format', $last_session->date_time);
-                        }
-                    })
-
+                $buttons .= '<a href="' . route('admin.classer.show', $session->classer->id) . '?session='. $session->id . '" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> '. Lang::get('button.more') .'</a>';
                     
+                if(!Auth::user()->academy){
+                    $buttons  .= '<button data-url="' . route('admin.classer.show', $session->classer->id) . '?session='. $session->id .'&modal=1" class="btn btn-xs btn-primary iframe-modal"><i class="glyphicon glyphicon-eye-open"></i> 팝업</button>';
+                }
 
-                     //query for name
-                     ->addColumn('name', function ($session) {
-                        if($session->classer->user){
-                            return $session->classer->user->name . '<br>' . $session->classer->user->korean_name;
-                        }else{
-                            return "wla";
-                        }
-                     })
-                    ->rawColumns(['show','name',  'edit','phones', 'time', 'day','status', 'duration', 'teacher', 'username', 'total_sessions', 'payment_method', 'last_session'])
-                    //->orderColumn('last_session', 'last_session $1')
-                    ->make(true);
-            }
+                return $buttons;
+                })
+                
+                ->addColumn('username', function ($session) {
+                return $session->classer->user ? $session->classer->user->username : "";
+                })
+
+                ->addColumn('type', function ($session) {
+                return $session->classer->type;
+                })
+
+                ->addColumn('minutes', function ($session) {
+                return $session->classer->minutes;
+            })
+                
+                ->addColumn('phones', function ($session) {
+                if($session->classer->user){
+                    
+                    $phones = "";
+                    $phones .=  $session->classer->user->contact_number . "<br>";
+
+                    if($session->classer->user->contact_number1)
+                    {
+                        $phones .= $session->classer->user->contact_number1;
+                    }else{
+                        $phones .= 'n/a';
+                    }
+                    return $phones;
+                }
+                })
+
+            ->addColumn('total_sessions', function ($session) {
+                $total = count($session->classer->getRemainingSession()) ? count($session->classer->getRemainingSession()) : "<span style='color:red'>". count($session->classer->getRemainingSession()) ."</span>" ;
+                $total .= '/' . $session->classer->total_sessions;
+                return $total;
+                })
+
+            ->addColumn('time', function ($session) {
+                return "<b style='color:green'>" . date('A h:i', strtotime($session->date_time)) . "</b>";
+                })
+                
+                ->addColumn('payment_method', function ($session) {
+                $text =  $session->classer->payment_method == "bank" ? "<img class='img-responsive' src='" . asset('image/icons/bank.png') . "'>" : "<img class='img-responsive' src='" . asset('image/icons/credit-card.png') . "'>";
+                $text .= number_format($session->classer->payment_price) . Lang::get('label.won');
+                return $text;
+            })
+
+                ->addColumn('day', function ($session) {
+                $days = "";
+
+                foreach($session->classer->day as $day):
+                    $days .= Lang::get('label.'. strtolower(str_limit($day->day_name, 3, ''))) . ", ";
+                endforeach;
+
+                return $days;
+                })
+
+            ->addColumn('teacher', function ($session) {
+                if($session->classer->admin){
+                    return $session->classer->admin->name;
+                }else{
+                    return "";
+                }
+                })
+
+                ->addColumn('status', function ($session) {
+                if($session->status == "absent"){
+                    return "<span style='color:red'>결석</span>";
+                }else if( $session->status == "postponed"){
+                    return "<span style='color:orange'>연기</span>";
+                }else if($session->status == "present"){
+                    return "<span style='color:blue'>출석</span>";
+                }else{
+                    return "<span>대기</span>";
+                }
+                })
+
+            ->addColumn('duration', function ($session) {
+                $first_session = $session->classer->getFirstSession();
+                if($first_session){
+                    return date_formater('date_format', $first_session->date_time);
+                }
+            })
+
+            ->addColumn('last_session', function ($session) {
+                $last_session = $session->classer->getLastSession();
+                if($last_session){
+                    return date_formater('date_format', $last_session->date_time);
+                }
+            })
+
+            
+
+                //query for name
+                ->addColumn('name', function ($session) {
+                if($session->classer->user){
+                    return $session->classer->user->name . '<br>' . $session->classer->user->korean_name;
+                }else{
+                    return "wla";
+                }
+                })
+            ->rawColumns(['show','name',  'edit','phones', 'time', 'day','status', 'duration', 'teacher', 'username', 'total_sessions', 'payment_method', 'last_session'])
+            //->orderColumn('last_session', 'last_session $1')
+            ->make(true);
+        }
 
         $html = $builder
                     ->parameters([
@@ -660,7 +630,7 @@ class ClasserController extends Controller
                         ],
                 ]);
 
-        return view('admin.class.today', compact('html'));
+        return view('admin.class.today', compact('html', 'datevalue'));
     }
 
     

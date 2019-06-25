@@ -31,11 +31,11 @@ class MessageController extends Controller
                 if(request()->recipient == "all"){
                     $messages = Message::whereHas("admin", function($q){
                         $q->where("type", 'teacher');
-                    })->orderBy('created_at','DESC')->get();
+                    })->has("user")->orderBy('created_at','DESC')->get();
                 }else{
                     $messages = Message::whereHas("admin", function($q){
                         $q->where("type", 'administrator');
-                    })->orderBy('created_at','DESC')->get();
+                    })->has("user")->orderBy('created_at','DESC')->get();
                 }
 
                 return DataTables::of($messages)
@@ -48,7 +48,11 @@ class MessageController extends Controller
 
                     //query for name
                     ->addColumn('student', function ($message) {
-                    return $message->user->username . '<br>' . $message->user->korean_name;
+                        if($message->user){
+                            return $message->user->username . '<br>' . $message->user->korean_name;
+                        }else{
+                            return "";
+                        }
                     })
 
                     ->addColumn('message', function ($message) {

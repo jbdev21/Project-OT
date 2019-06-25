@@ -202,11 +202,36 @@
                 $('.edit-postpone-div').hide();
             })
 
-             $("#reservation").daterangepicker({
-                minDate: {{date('Y-m-d')}},
-             }, function (startDate, endDate, period) {
-              $(this).val(startDate.format('L') + ' – ' + endDate.format('L'))
-            });
+            @if(is_desktop())
+             
+                $("#reservation").daterangepicker({
+                    minDate: {{date('Y-m-d')}},
+                }, function (startDate, endDate, period) {
+                    $(this).val(startDate.format('L') + ' – ' + endDate.format('L'))
+                });
+
+            @else
+
+                $("#datepicker1").daterangepicker({
+                    minDate: {{date('Y-m-d')}},
+                    singleDatePicker: true
+                }, function (startDate, endDate, period) {
+                    $(this).val(startDate.format('L') + ' – ' + endDate.format('L'))
+                    generageRange(startDate.format('L'), $("#datepicker2").val())
+                });
+                $("#datepicker2").daterangepicker({
+                    minDate: $("#datepicker1").val(),
+                    singleDatePicker: true
+                }, function (startDate, endDate, period) {
+                    $(this).val(startDate.format('L') + ' – ' + endDate.format('L'))
+                    generageRange($("#datepicker1").val(), endDate.format('L'))
+                });
+
+                function generageRange(first, second){
+                    $('#fullDataRange').val(first + ' - ' + second);
+                }
+
+            @endif
 
             $('#tab-range-btn').click(function(){
                 $('#type').val('range')

@@ -13,7 +13,17 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <label>@lang('label.today_class_session')</label>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>@lang('label.today_class_session')</label>
+                    </div>
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-2">
+                                        <form>
+                        <input type="date" style='width:165px;' id="dateInput" value="{{ $datevalue }}" name="date" class="form-control pull-right">
+                    </form>
+                    </div>
+                </div>
             </div>
             {!! $html->table() !!}
         </div>
@@ -52,6 +62,10 @@
     {!! $html->scripts() !!}
     <script type="text/javascript">
         $(document).ready(function(){
+            
+            $("#dateInput").change(function(){
+                $('form').submit();
+            })
 
             $("#checkAll").click(function(){
                 $('input:checkbox').not(this).prop('checked', this.checked);

@@ -2,19 +2,23 @@
 
 namespace App\Providers;
 
+use App\User;
 use App\Classer;
-use App\Inquiry;
 
 //for Observers
+use App\Holiday;
+use App\Inquiry;
+
 use App\LevelTest;
 use App\ProofReading;
 
+use App\Observers\UserObserver;
 use App\Observers\ClasserObserver;
-use App\Observers\InquiryObserver;
 
+use App\Observers\HolidayObserver;
+use App\Observers\InquiryObserver;
 use Illuminate\Support\Collection;
 use App\Observers\LevelTestObserver;
-
 use Illuminate\Pagination\Paginator;
 use App\Observers\ProofReadingObserver;
 use Illuminate\Support\ServiceProvider;
@@ -38,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
         Classer::observe(ClasserObserver::class);
         Inquiry::observe(InquiryObserver::class);
         ProofReading::observe(ProofReadingObserver::class);
+        Holiday::observe(HolidayObserver::class);
+        User::observe(UserObserver::class);
 
         if (!Collection::hasMacro('paginate')) {
             Collection::macro('paginate', 

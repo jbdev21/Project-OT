@@ -327,7 +327,7 @@
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">시작일자 
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input  type="date" name="start_date" value="{{ date('Y-m-d') }}" class="form-control col-md-7 col-xs-12">
+                                    <input  type="date" name="start_date" value="{{ date('Y-m-d', strtotime($class->getLastSession()->date_time . " + 1days")) }}" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">

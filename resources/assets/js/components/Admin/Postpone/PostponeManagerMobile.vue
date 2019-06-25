@@ -18,7 +18,16 @@
                     </div>
                     <div role="tabpanel" class="tab-pane" id="range">
                         <label>{{  trans('label.date_range') }}</label><br>
-                        <input type="text" style="width: 100%"  name="range" id="reservation" class="form-control"  />
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input type="text" style="width: 100%"  id="datepicker1" class="form-control"  />
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="text" style="width: 100%"  id="datepicker2" class="form-control"  />
+                            </div>
+                        </div>
+                        <br>
+                        <input type="text" readonly style="width: 100%"  name="range" id="fullDataRange" class="form-control"  />
                     </div>
                 </div>
                 <div class="padding-md">
@@ -30,8 +39,14 @@
                     <br>
                     <label>{{ trans('label.postponed_credits') }}</label>
                     <br>
-                    <label>
-                        <input type="checkbox" name="deduction" value="1" v-model="deduction" checked > {{ trans('label.yes') }}
+                   <label>
+                        <input type="radio" value="1" name="deduction" checked> Yes <br>
+                        <input type="radio" value="0" name="deduction"> No
+                        <!-- <select name="deduction" id="">
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                        </select> -->
+                        <!-- <input type="checkbox" name="deduction" value="1" v-model="deduction" checked > {{ trans('label.yes') }} -->
                     </label>
                     <br>
                     <br>

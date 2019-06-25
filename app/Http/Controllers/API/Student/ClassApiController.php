@@ -33,7 +33,7 @@ class ClassApiController extends Controller
         $array = array();
         $number = 1;
        // return $class->classSession()->with('mistake')->paginate($per_page);
-        foreach($class->classSession()->with('mistake')->get() as $session)
+        foreach($class->classSession()->with('mistake')->orderBy('date_time', 'ASC')->get() as $session)
         {
             $item = array(
                     'id' => $session->id,
@@ -64,7 +64,8 @@ class ClassApiController extends Controller
 
             array_push($array , $item);
         }
-         $pageStart = $request->get('page', 1);
+        
+        $pageStart =  $request->page == 0  ? $current : $request->page;
         // Start displaying items from this number;
         $offSet = ($pageStart * $per_page) - $per_page; 
 
@@ -83,7 +84,7 @@ class ClassApiController extends Controller
         $array = array();
         $selected = 0;
         
-        foreach($class->classSession as $session)
+        foreach($class->classSession()->orderBy('date_time', 'ASC')->get() as $session)
         {
            
 
